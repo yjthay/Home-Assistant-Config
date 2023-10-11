@@ -1,14 +1,16 @@
 # Whitelisted files and folders
 *
+!*/
+!*.md
 !*.yaml
 !.gitignore
 !scenes
 !automations/**
 
 # Ignore folders
-.nest
-.image
-.custom_components
+nest
+image
+custom_components
 .ssh
 logs
 *.log
