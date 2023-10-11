@@ -3,7 +3,7 @@
 !*.yaml
 !.gitignore
 !scenes
-!automations
+!automations/**
 
 # Ignore folders
 .nest
