@@ -1,0 +1,7 @@
+# Github Integration
+#  - platform: github
+#    access_token: !secret github_token
+#    repositories:
+#      - path: 'yjthay/Home-Assistant-Config'
+#        name: YJ's Home Assistant Config
+
