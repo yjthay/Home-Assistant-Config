@@ -4,6 +4,8 @@
 ################################################################################
 
 # Nothing to see here. Move along.
+# Linking Github to Home Assistant on Terminal
+# https://www.youtube.com/watch?v=DXRApbuO6V4
 homeassistant:
   packages: !include_dir_named packages
 
