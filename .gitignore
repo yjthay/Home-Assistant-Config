@@ -3,23 +3,24 @@
 !*.yaml
 !.gitignore
 !scenes
+!automations
 
 # Ignore folders
 .nest
 .image
 .custom_components
-*.google.token
 .ssh
-.google.token
 logs
 *.log
-.spotify-token-cache
 .storage
+home-assistant.env
+home-assistant.*
+.google.token
+*.google.token
+.spotify-token-cache
 .config_entries.json
 abodepy_cache.pickle
 camera_recording.py
-home-assistant.env
-home-assistant.*
 
 # Ensure these yaml are ignored
 secrets.yaml
