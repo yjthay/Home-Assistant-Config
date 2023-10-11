@@ -7,7 +7,7 @@ automation:
         after: sunset
     trigger:
       - platform: device
-        device_id: !secret home_eye_device_id
+        device_id: !secret nest_home_eye_device_id
         domain: nest
         type: camera_person
     action:
@@ -56,3 +56,37 @@ automation:
                 data:
                   message: "Activity in Living Room during the day"
     mode: single
+  - id: Turn on Starboard on Front Yard Motion
+    alias: Capture Image on Trigger, Send Mobile Notification with Actions, Snooze or Alarm via Actions
+    description: ""
+    trigger:
+      - platform: state
+        entity_id:
+          - binary_sensor.front_yard_motion_detected
+          - binary_sensor.front_yard_person_detected
+        to: 
+          - "on"
+          - "off"
+    action:
+      - if:
+          - condition: state
+            entity_id: 
+            - binary_sensor.front_yard_motion_detected
+            - binary_sensor.front_yard_person_detected
+            state: 'on'
+        then:
+          - type: turn_on
+            device_id: !secret shelly_starboard_device_id
+            entity_id: !secret shelly_starboard_entity_id
+            domain: light
+          - service: notify.mobile_app_pixel_6_pro
+            data:
+              message: Motion at Front Yard (On - Living Room Lights)
+        else:
+          - type: turn_off
+            device_id: !secret shelly_starboard_device_id
+            entity_id: !secret shelly_starboard_entity_id
+            domain: light
+          - service: notify.mobile_app_pixel_6_pro
+            data:
+              message: Front Yard Empty (Off - Living Room Lights)
