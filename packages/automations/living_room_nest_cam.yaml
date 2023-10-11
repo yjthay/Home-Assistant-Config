@@ -1,0 +1,58 @@
+automation:
+  ################################################################################
+  - id: motion_in_living_room
+    alias: "Motion in Living Room"
+    condition:
+      - condition: sun
+        after: sunset
+    trigger:
+      - platform: device
+        device_id: !secret home_eye_device_id
+        domain: nest
+        type: camera_person
+    action:
+      - alias: 'State Handler'
+        choose:
+          - conditions:
+              - alias: 'Sun is down'
+                condition: state
+                entity_id: sun.sun
+                state: 'below_horizon'
+            sequence:
+              - service: notify.notify
+                data:
+                  message: "On - Living Room Lights."
+              - type: turn_on
+                device_id: !secret shelly_port_device_id
+                entity_id: !secret shelly_port_entity_id
+                domain: light
+              - type: turn_on
+                device_id: !secret shelly_starboard_device_id
+                entity_id: !secret shelly_starboard_entity_id
+                domain: light
+              - delay:
+                  hours: 0
+                  minutes: 3
+                  seconds: 0
+                  milliseconds: 0
+              - service: notify.notify
+                data:
+                  message: "Off - Living Room Lights."
+              - type: turn_off
+                device_id: !secret shelly_port_device_id
+                entity_id: !secret shelly_port_entity_id
+                domain: light
+              - type: turn_off
+                device_id: !secret shelly_starboard_device_id
+                entity_id: !secret shelly_starboard_entity_id
+                domain: light
+          - conditions:
+              - alias: 'Sun is up'
+                condition: state
+                entity_id: sun.sun
+                state: 'above_horizon'
+            sequence: 
+              - service: notify.notify
+                data:
+                  message: "Activity in Living Room during the day"
+    mode: single
