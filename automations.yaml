@@ -1,0 +1,35 @@
+- id: slow_cooker
+  alias: 3 hours Slow Cook
+  description: Slow Cook for 3 hours
+  trigger:
+    - platform: time
+      at: 05:00:00
+  condition: []
+  action:
+    - type: turn_on
+      device_id: !secret slow_cooker_device_id
+      entity_id: !secret slow_cooker_entity_id
+      domain: switch
+    - service: timer.start
+      target:
+        entity_id: timer.start_time
+    - service: notify.mobile_app_pixel_6_pro
+      data:
+        message: "Slow Cooker: On at {{now().strftime('%H:%M:%S')}}"
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 30
+        milliseconds: 0
+    - type: turn_off
+      device_id: !secret slow_cooker_device_id
+      entity_id: !secret slow_cooker_entity_id
+      domain: switch
+    - service: notify.mobile_app_pixel_6_pro
+      data:
+        message: >
+          Slow Cooker: Off at {{now().strftime('%H:%M:%S')}}  (On for {{ states('sensor.slow_cooker_uptime') }} hrs)
+    - service: timer.cancel
+      target:
+        entity_id: timer.start_time
+  mode: single
