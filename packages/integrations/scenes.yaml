@@ -1,1 +1,16 @@
-scene: !include ../../scenes.yaml
+scene: 
+  !include ../../scenes.yaml
+# scene yaml:
+#   - id: 'scene_bedroom_lights'
+#     name: Scene - Bedroom Lights
+#     entities:
+#       switch.bedroom_lights_switch_1:
+#         device_class: switch
+#         friendly_name: Bedroom - Desk
+#         state: 'onoff'
+#       switch.bedroom_lights_switch_2:
+#         device_class: switch
+#         friendly_name: Bedroom - Bed
+#         state: 'onoff'
+#     icon: mdi:ceiling-light-multiple-outline
+#     metadata: {}
