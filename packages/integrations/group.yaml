@@ -1,0 +1,12 @@
+light:
+  - platform: group
+    name: Living Room Lights
+    entities:
+      - light.shelly1l_98cdac1ea76f
+      - light.shelly1l_e8db84a22405
+switch:
+  - platform: group
+    name: Bedroom Lights
+    entities:
+      - switch.bedroom_lights_switch_1
+      - switch.bedroom_lights_switch_2
