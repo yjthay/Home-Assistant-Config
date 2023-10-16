@@ -1,2 +1,16 @@
 type: 'custom:webrtc-camera'
-url: !secret go2etc_url
+streams:
+  - url: !secret go2rtc_url
+    name: eufy_front_yard
+    mode: webrtc
+
+
+### This will generate a debugging level log for Go2RTC ###
+log:
+  level: trace
+  api: debug
+  exec: debug
+  ngrok: debug
+  rtsp: trace
+  streams: debug
+  webrtc: debug
