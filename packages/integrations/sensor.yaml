@@ -1,6 +1,57 @@
-# Github Integration
-#  - platform: github
-#    access_token: !secret github_token
-#    repositories:
-#      - path: 'yjthay/Home-Assistant-Config'
-#        name: YJ's Home Assistant Config
+sensor:
+  - platform: history_stats
+    name: slow_cooker_uptime
+    entity_id: switch.slow_cooker_socket_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: bedroom_heater_uptime
+    entity_id: switch.bedroom_heater_socket_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: dyson_vacuum_uptime
+    entity_id: switch.dyson_vacuum_cleaner_socket_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: kitchen_fan_uptime
+    entity_id: switch.kitchen_fan_socket_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: air_purifier_uptime
+    entity_id: switch.air_purifier_socket_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: living_room_lights_uptime
+    entity_id: light.living_room_lights
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: backyard_lights_uptime
+    entity_id: light.shellyplus1pm_a8032abb956c_switch_0
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: bedroom_lights_uptime
+    entity_id: switch.bedroom_lights
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
