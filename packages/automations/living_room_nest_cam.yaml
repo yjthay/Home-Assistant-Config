@@ -43,35 +43,35 @@ automation:
                 data:
                   message: "Activity in Living Room during the day"
     mode: single
-  - id: camera_front_yard_lights
-    alias: "Lights on detection of motion in front yard"
-    description: ""
-    trigger:
-      - platform: state
-        entity_id:
-          - binary_sensor.front_yard_motion_detected
-          - binary_sensor.front_yard_person_detected
-        to: 
-          - "on"
-          - "off"
-    action:
-      - if:
-          - condition: state
-            entity_id: 
-            - binary_sensor.front_yard_motion_detected
-            - binary_sensor.front_yard_person_detected
-            state: 'on'
-        then:
-          - service: light.turn_on
-            target:
-              entity_id: light.living_room_lights    
-          - service: notify.mobile_app_pixel_6_pro
-            data:
-              message: "Front Yard: Motion detected (On - Living Room Lights)"
-        else:
-          - service: light.turn_off
-            target:
-              entity_id: light.living_room_lights     
-          - service: notify.mobile_app_pixel_6_pro
-            data:
-              message: "Front Yard: Empty (Off - Living Room Lights)"
+  # - id: camera_front_yard_lights
+  #   alias: "Lights on detection of motion in front yard"
+  #   description: ""
+  #   trigger:
+  #     - platform: state
+  #       entity_id:
+  #         - binary_sensor.front_yard_motion_detected
+  #         - binary_sensor.front_yard_person_detected
+  #       to: 
+  #         - "on"
+  #         - "off"
+  #   action:
+  #     - if:
+  #         - condition: state
+  #           entity_id: 
+  #           - binary_sensor.front_yard_motion_detected
+  #           - binary_sensor.front_yard_person_detected
+  #           state: 'on'
+  #       then:
+  #         - service: light.turn_on
+  #           target:
+  #             entity_id: light.living_room_lights    
+  #         - service: notify.mobile_app_pixel_6_pro
+  #           data:
+  #             message: "Front Yard: Motion detected (On - Living Room Lights)"
+  #       else:
+  #         - service: light.turn_off
+  #           target:
+  #             entity_id: light.living_room_lights     
+  #         - service: notify.mobile_app_pixel_6_pro
+  #           data:
+  #             message: "Front Yard: Empty (Off - Living Room Lights)"
