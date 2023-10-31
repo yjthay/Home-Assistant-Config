@@ -7,6 +7,8 @@ automation:
         entity_id:
           - binary_sensor.front_yard_motion_detected
           - binary_sensor.front_yard_person_detected
+          - binary_sensor.side_yard_motion_detected
+          - binary_sensor.side_yard_person_detected
         to: "on"
         id: sensor
       - platform: event
@@ -47,7 +49,9 @@ automation:
                   snooze_motion: true
                   snooze_homebase: false
                 target:
-                  entity_id: camera.front_yard
+                  entity_id: 
+                    - camera.front_yard
+                    - camera.side_yard
           - conditions:
               - condition: trigger
                 id: alarm
@@ -56,5 +60,7 @@ automation:
                 data:
                   duration: 1
                 target:
-                  entity_id: camera.front_yard
+                  entity_id: 
+                    - camera.front_yard
+                    - camera.side_yard
     mode: single
