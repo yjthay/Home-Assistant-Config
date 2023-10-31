@@ -1,9 +1,9 @@
 
 panel_custom:
-  # - name: config/automation
-  #   sidebar_title: Automations
-  #   sidebar_icon: mdi:home-automation
-  #   module_url: any text
+  - name: config/automation
+    sidebar_title: Automations
+    sidebar_icon: mdi:home-automation
+    module_url: any text
     
   # - name: config/script/dashboard
   #   sidebar_title: Scripts
@@ -15,15 +15,15 @@ panel_custom:
     sidebar_icon: mdi:puzzle
     module_url: any text
     
-  # - name: config/entities
-  #   sidebar_title: Entities
-  #   sidebar_icon: mdi:shape
-  #   module_url: any text
+  - name: config/entities
+    sidebar_title: Entities
+    sidebar_icon: mdi:shape
+    module_url: any text
     
-  # - name: config/helpers
-  #   sidebar_title: Helpers
-  #   sidebar_icon: mdi:variable
-  #   module_url: any text
+  - name: config/helpers
+    sidebar_title: Helpers
+    sidebar_icon: mdi:variable
+    module_url: any text
     
   - name: hassio/dashboard
     sidebar_title: Add Ons
