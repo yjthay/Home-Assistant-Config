@@ -1,0 +1,49 @@
+automation:
+  - id: backyard_camera_lights
+    alias: "Lights on detection of motion in backyard"
+    description: ""
+    trigger:
+      - platform: device
+        device_id: !secret nest_back_yard_camera_device_id
+        domain: nest
+        type: camera_person
+      - platform: device
+        device_id: !secret nest_back_yard_camera_device_id
+        domain: nest
+        type: camera_motion
+    action:
+      - alias: 'State Handler'
+        choose:
+          - conditions:
+              - alias: 'Sun is down'
+                condition: state
+                entity_id: sun.sun
+                state: 'below_horizon'
+            sequence:
+              - service: notify.notify
+                data:
+                  message: "Motion: Backyard (Lights - On)"
+              - service: light.turn_on
+                target:
+                  entity_id: light.shellyplus1pm_a8032abb956c_switch_0
+              - delay:
+                  hours: 0
+                  minutes: 2
+                  seconds: 0
+                  milliseconds: 0
+              - service: notify.notify
+                data:
+                  message: "Motion: Backyard (Lights - Off)"
+              - service: light.turn_off
+                target:
+                  entity_id: light.shellyplus1pm_a8032abb956c_switch_0
+          - conditions:
+              - alias: 'Sun is up'
+                condition: state
+                entity_id: sun.sun
+                state: 'above_horizon'
+            sequence: 
+              - service: notify.notify
+                data:
+                  message: "Motion: Backyard"
+    mode: single
